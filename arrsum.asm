@@ -1,0 +1,21 @@
+.MODEL SMALL
+.DATA
+
+A DB 12,24,45,67,34
+SUM DW 0
+
+.CODE
+MOV AX,@DATA
+MOV DS,AX
+MOV CL,5
+XOR DI,DI
+LEA BX,A
+
+BACK: MOV AL,[BX+DI]
+       MOV AH,00
+       ADD SUM,AX
+       INC DI
+       DEC CL
+       JNZ BACK
+END
+
